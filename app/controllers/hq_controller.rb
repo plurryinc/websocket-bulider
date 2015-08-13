@@ -6,6 +6,11 @@ class HqController < WebsocketRails::BaseController
 
   def echo
     receive_message = message()
-    broadcast_message(:echo, receive_message)
+    response = Echo.where(query: receive_message).take
+    #if response.nil?
+      broadcast_message(:echo, receive_message)
+    #else
+    #  broadcast_message(:echo, response.response)
+    #end
   end
 end
