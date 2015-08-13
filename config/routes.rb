@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'client/index'
+  post 'client/create_command'
+  post 'client/create_response'
   root 'client#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
