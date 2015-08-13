@@ -1,9 +1,8 @@
 <h1>Command List</h1>
 <ol>
-  <li><button class="command_btn">title</button> <span class="command">command</span> => <span class="response">response</span></li>
-  <li><button class="command_btn">title</button> <span class="command">command1</span> => <span class="response">response</span></li>
-  <li><button class="command_btn">title</button> <span class="command">command2</span> => <span class="response">response</span></li>
-  <li><button class="command_btn">title</button> <span class="command">command3</span> => <span class="response">response</span></li>
+  <% @commands.each do |c| %>
+    <li><button class="command_btn"><%=c.title%></button> <span class="command"><%=c.command%></span></li>
+  <% end %>
 </ol>
 <%=form_tag "/client/create_command" do %>
   <input type="text" name="title" placeholder="제목">
@@ -11,8 +10,8 @@
   <input type="submit">
 <% end %>
 <h1>Logs</h1>
-<ol id="logs">
-</ol>
+<ul id="logs">
+</ul>
 
 <script>
 var dispatcher = new WebSocketRails('localhost:3000/websocket');
@@ -22,6 +21,6 @@ $(".command_btn").on("click", function() {
   });
 dispatcher.bind('echo', function(msg) {
     console.log(msg);
-    $("#logs").append('<li>'+'RESPONSE : '+msg+" ["+Date().toLocaleString() + ']</li>');
+    $("#logs").prepend('<li>'+msg+" ["+Date().toLocaleString() + ']</li>');
 });
 </script>
