@@ -1,11 +1,19 @@
 <h1>Command List</h1>
-<li><button>title</button> command => <span>response</span></li>
-<li><button>title</button> command => <span>response</span></li>
-<li><button>title</button> command => <span>response</span></li>
-<li><button>title</button> command => <span>response</span></li>
+<li><button class="command_btn">title</button> <span class="command">command</span> => <span class="response">response</span></li>
+<li><button class="command_btn">title</button> <span class="command">command1</span> => <span class="response">response</span></li>
+<li><button class="command_btn">title</button> <span class="command">command2</span> => <span class="response">response</span></li>
+<li><button class="command_btn">title</button> <span class="command">command3</span> => <span class="response">response</span></li>
 <%=form_tag "/client/create_command" do %>
   <input type="text" name="title" placeholder="제목">
   <input type="text" name="command" placeholder="명령어">
   <input type="submit">
 <% end %>
 
+<script>
+$(".command_btn").on("click", function() {
+  var command = $(this).parent().find(".command").text();
+  console.log(command)
+  var dispatcher = new WebSocketRails('localhost:3000/echo');
+  dispatcher.trigger('echo', command);
+});
+</script>
