@@ -5,5 +5,7 @@ class HqController < WebsocketRails::BaseController
   end
 
   def echo
+    receive_message = message()
+    broadcast_message(:echo, receive_message)
   end
 end
