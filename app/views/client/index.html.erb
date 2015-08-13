@@ -31,7 +31,7 @@
 </div>
 
 <script>
-var dispatcher = new WebSocketRails('localhost:3000/websocket');
+var dispatcher = new WebSocketRails('plurry.cycorld.com:3000/websocket');
 $(".command_btn").on("click", function() {
   var command = $(this).parent().find(".command").text();
   dispatcher.trigger('echo', command);
