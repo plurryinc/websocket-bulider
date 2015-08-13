@@ -3,4 +3,7 @@ class HqController < WebsocketRails::BaseController
     # perform application setup here
     # controller_store[:message_count] = 0
   end
+
+  def echo
+  end
 end
