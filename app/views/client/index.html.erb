@@ -1,2 +1,11 @@
-<h1>Client#index</h1>
-<p>Find me in app/views/client/index.html.erb</p>
+<h1>Command List</h1>
+<li><button>title</button> command => <span>response</span></li>
+<li><button>title</button> command => <span>response</span></li>
+<li><button>title</button> command => <span>response</span></li>
+<li><button>title</button> command => <span>response</span></li>
+<%=form_tag "/client/create_command" do %>
+  <input type="text" name="title" placeholder="제목">
+  <input type="text" name="command" placeholder="명령어">
+  <input type="submit">
+<% end %>
+
